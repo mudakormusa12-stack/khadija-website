@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Bag | BY KHADIJAH.NG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">BY KHADIJAH.NG</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Bag <span id="cartCount">0</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <p class="eyebrow">YOUR SELECTION</p>
+    <h1>Your <em>bag.</em></h1>
+
+    <div id="cart"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+
+<script>
+function renderCart() {
+  var box = document.getElementById("cart");
+
+  if (cart.length === 0) {
+    box.innerHTML =
+      "<div class='empty-shop'>" +
+      "<h2>Your bag is empty.</h2>" +
+      "<p>Discover something beautiful from our collection.</p>" +
+      "<a class='button' href='shop.html'>SHOP THE COLLECTION</a>" +
+      "</div>";
+    return;
+  }
+
+  var total = 0;
+
+  box.innerHTML = cart.map(function(item) {
+    var line = Number(item.price) * item.qty;
+    total += line;
+
+    return (
+      "<div class='cart-item'>" +
+      "<h3>" + item.name + "</h3>" +
+      "<p class='eyebrow'>" + item.category + "</p>" +
+      "<p>₦" + Number(item.price).toLocaleString() + " × " + item.qty + "</p>" +
+      "<button onclick='changeQty(" + item.id + ", 1)'>+</button> " +
+      "<button onclick='changeQty(" + item.id + ", -1)'>−</button> " +
+      "<button onclick='removeItem(" + item.id + ")'>REMOVE</button>" +
+      "</div>"
+    );
+  }).join("");
+
+  box.innerHTML +=
+    "<div class='cart-total'>" +
+    "<p>SUBTOTAL</p>" +
+    "<h2>₦" + total.toLocaleString() + "</h2>" +
+    "<a class='button' href='checkout.html'>PROCEED TO CHECKOUT</a>" +
+    "</div>";
+}
+
+function changeQty(id, n) {
+  var item = cart.find(function(x) {
+    return x.id == id;
+  });
+
+  if (!item) return;
+
+  item.qty += n;
+
+  if (item.qty < 1) {
+    cart = cart.filter(function(x) {
+      return x.id != id;
+    });
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeItem(id) {
+  cart = cart.filter(function(x) {
+    return x.id != id;
+  });
+
+  saveCart();
+  renderCart();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateCartCount();
+  renderCart();
+});
+</script>
+
+</body>
+</html>

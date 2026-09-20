@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout | BY KKADIJAH.NG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+<na class="logo" href="index.html">BY KHADIJAH.NG</a>
+<nav><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="cart.html">Bag <span id="cartCount">0</span></a></nav>
+</header>
+<main>
+<section class="section">
+<p class="eyebrow">BY KHADIJAH.NG</p>
+<h1>Complete your <em>order.</em></h1>
+<form id="checkoutForm" class="checkout-form">
+<label>Full Name</label>
+<input id="customerName" required>
+<label>Phone Number</label>
+<input id="customerPhone" required>
+<label>Delivery Address</label>
+<textarea id="customerAddress" required></textarea>
+<label>State</label>
+<input id="customerState" required>
+<label>Order Note</label>
+<textarea id="customerNote"></textarea>
+<button class="button" type="submit">SEND ORDER ON WHATSAPP</button>
+</form>
+<aside class="checkout-summary">
+<p class="eyebrow">ORDER SUMMARY</p>
+<div id="orderSummary"></div>
+<hr>
+<p ><b>PAYMENT DETAILS</b></p>
+<p>Account Name: <b>Khadija Ali Dauda</b></p>
+<p>Account Number: <b>7087580586</b></p>
+<p>After submitting, we will confirm your order and delivery details on WhatsApp.</p>
+</aside>
+</section>
+</main>
+<script src="script.js"></script>
+
+<script>
+function showSummary() {
+  var box = document.getElementById("orderSummary");
+
+  if (!cart || cart.length === 0) {
+    box.innerHTML =
+      "<p>Your bag is empty.</p>" +
+      "<a class='button' href='shop.html'>Return to shop</a>";
+    return;
+  }
+
+  var total = 0;
+
+  box.innerHTML = cart.map(function(x) {
+    var price = Number(x.price) || 0;
+    var qty = Number(x.qty) || 1;
+    total += price * qty;
+
+    return "<p><b>" + x.name + "</b><br>" +
+           qty + " × ₦" + price.toLocaleString() + "</p>";
+  }).join("");
+
+  box.innerHTML +=
+    "<h2>Total: ₦" + total.toLocaleString() + "</h2>";
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  updateCartCount();
+  showSummary();
+
+  var form = document.getElementById("checkoutForm");
+
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    if (!cart || cart.length === 0) {
+      alert("Your bag is empty.");
+      return;
+    }
+
+    var name =
+      document.getElementById("customerName").value.trim();
+
+    var phone =
+      document.getElementById("customerPhone").value.trim();
+
+    var address =
+      document.getElementById("customerAddress").value.trim();
+
+    var state =
+      document.getElementById("customerState").value.trim();
+
+    var note =
+      document.getElementById("customerNote").value.trim();
+
+
+    var items = cart.map(function(x) {
+
+      var price = Number(x.price) || 0;
+      var qty = Number(x.qty) || 1;
+
+      return {
+        name: x.name,
+        price: price,
+        qty: qty,
+        subtotal: price * qty
+      };
+
+    });
+
+
+    var total = items.reduce(function(sum, item) {
+      return sum + item.subtotal;
+    }, 0);
+
+
+    var orders = [];
+
+    try {
+      orders = JSON.parse(
+        localStorage.getItem("khadijaOrders") || "[]"
+      );
+
+      if (!Array.isArray(orders)) {
+        orders = [];
+      }
+
+    } catch(error) {
+      orders = [];
+    }
+
+
+    var order = {
+      id: "ORD-" + Date.now(),
+      name: name,
+      phone: phone,
+      address: address,
+      state: state,
+      note: note,
+      items: items,
+      total: total,
+      status: "Pending",
+      date: new Date().toLocaleString()
+    };
+
+
+    orders.unshift(order);
+
+
+    localStorage.setItem(
+      "khadijaOrders",
+      JSON.stringify(orders)
+    );
+
+
+    /* VERIFY THAT THE ORDER WAS SAVED */
+
+    var savedOrders =
+      JSON.parse(
+        localStorage.getItem("khadijaOrders") || "[]"
+      );
+
+    if (
+      !savedOrders.length ||
+      savedOrders[0].id !== order.id
+    ) {
+      alert("The order could not be saved. Please try again.");
+      return;
+    }
+
+
+    var whatsappItems = items.map(function(item) {
+
+      return item.name +
+        " x" + item.qty +
+        " = ₦" +
+        item.subtotal.toLocaleString();
+
+    }).join("\n");
+
+
+    var message =
+      "Hello BY KHADIJAH.NG, I want to place an order.\n\n" +
+      "Order ID: " + order.id + "\n" +
+      "Name: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Address: " + address + "\n" +
+      "State: " + state + "\n\n" +
+      "Order:\n" + whatsappItems + "\n\n" +
+      "Total: ₦" + total.toLocaleString() + "\n" +
+      "Note: " + note + "\n\n" +
+      "Payment Account: Khadija Ali Dauda\n" +
+      "Account Number: 7087580586";
+
+
+    window.location.href =
+      "https://wa.me/2347087580586?text=" +
+      encodeURIComponent(message);
+
+  });
+
+});
+</script>
+</body>
+</html>

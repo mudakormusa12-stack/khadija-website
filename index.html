@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BY KHADIJAH.NG • NIGERIA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.home-hero{min-height:78vh;display:flex;align-items:center;padding:80px 7%;background:linear-gradient(120deg,#f7f2ec,#fff 55%,#eee5dc)}
+.hero-inner{max-width:700px}
+.eyebrow{font-size:13px;letter-spacing:3px;font-weight:700;margin-bottom:25px}
+.hero-title{font-family:Georgia,serif;font-size:clamp(52px,8vw,105px);line-height:.95;margin:0 0 30px;max-width:800px}
+.hero-text{font-size:18px;line-height:1.8;max-width:600px;color:#555}
+.hero-buttons{display:flex;gap:15px;flex-wrap:wrap;margin:35px 0 55px}
+.hero-buttons a{padding:15px 25px;text-decoration:none;font-weight:700;letter-spacing:1px}
+.btn-dark{background:#111;color:#fff}
+.btn-light{border:1px solid #111;color:#111}
+.highlights{display:flex;gap:45px;flex-wrap:wrap}
+.highlight strong{display:block;font-size:13px;letter-spacing:2px;margin-bottom:7px}
+.highlight span{font-size:13px;color:#777}
+.section{padding:100px 7%}
+.section-label{font-size:12px;letter-spacing:3px;font-weight:700}
+.section-title{font-family:Georgia,serif;font-size:clamp(42px,6vw,75px);line-height:1;margin:18px 0 25px}
+.section-text{max-width:650px;color:#666;line-height:1.8;font-size:17px}
+.collection-grid,.delivery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:50px}
+.collection-card,.delivery-card{padding:45px;background:#f4eee8;min-height:210px}
+.collection-card:nth-child(2){background:#e9e0d7}
+.card-number{font-size:12px;letter-spacing:2px}
+.collection-card h3{font-family:Georgia,serif;font-size:32px;margin:45px 0 12px}
+.collection-card p,.delivery-card p{color:#666;line-height:1.6}
+.delivery-grid{grid-template-columns:repeat(3,1fr)}
+.delivery-card{background:#f4eee8}
+.delivery-card h3{font-family:Georgia,serif;font-size:25px;margin-top:35px}
+.about{background:#111;color:#fff}
+.about .section-text{color:#ccc}
+.signature{font-family:Georgia,serif;font-size:28px;margin-top:40px}
+.final-cta{text-align:center;background:#eee5dc}
+.final-cta .section-text{margin:0 auto}
+.final-cta a{display:inline-block;margin-top:30px;background:#111;color:#fff;padding:16px 30px;text-decoration:none;font-weight:700;letter-spacing:1px}
+@media(max-width:700px){
+.home-hero{min-height:auto;padding:65px 6%}
+.hero-title{font-size:55px}
+.highlights{gap:25px}
+.collection-grid,.delivery-grid{grid-template-columns:1fr}
+.section{padding:75px 6%}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<a href="index.html">HOME</a>
+<a href="shop.html">SHOP</a>
+<a href="#about">ABOUT</a>
+<a href="#delivery">DELIVERY</a>
+<a href="cart.html">CART <span id="cartCount">0</span></a>
+</nav>
+</header>
+
+<main>
+
+<section class="home-hero">
+<div class="hero-inner">
+<div class="eyebrow">BY KHADIJAH.NG • NIGERIA</div>
+<h1 class="hero-title">Confidence looks best in luxe.</h1>
+<p class="hero-text">Discover elegant ready-to-wear pieces designed for women who love confidence, comfort and timeless style.</p>
+
+<div class="hero-buttons">
+<a class="btn-dark" href="shop.html">SHOP COLLECTION</a>
+<a class="btn-light" href="#about">DISCOVER KHADIJAH</a>
+</div>
+
+<div class="highlights">
+<div class="highlight"><strong>QUALITY</strong><span>Carefully selected</span></div>
+<div class="highlight"><strong>STYLE</strong><span>Made for you</span></div>
+<div class="highlight"><strong>DELIVERY</strong><span>Across Nigeria</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-label">THE KHADIJAH COLLECTION</div>
+<h2 class="section-title">Made for women<br>who stand out.</h2>
+<p class="section-text">From everyday elegance to special occasions, discover pieces designed to make you feel confident and beautifully put together.</p>
+
+<div class="collection-grid">
+<div class="collection-card">
+<div class="card-number">01</div>
+<h3>READY-TO-WEAR</h3>
+<p>Effortless pieces for every occasion.</p>
+</div>
+<div class="collection-card">
+<div class="card-number">02</div>
+<h3>SIGNATURE SETS</h3>
+<p>Elegant designs made to stand out.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="section-label">THE STORY BEHIND KHADIJAH</div>
+<h2 class="section-title">By Khadijah.ng is a Nigerian ready-to-wear brand created for women who love to feel elegant, confident and effortlessly beautiful.</h2>
+<p class="section-text">We believe getting dressed should feel special. Every piece is selected with style, comfort and versatility in mind.</p>
+<div class="signature">Confidence looks best in luxe.</div>
+</section>
+
+<section class="section" id="delivery">
+<div class="section-label">DELIVERY & ORDERS</div>
+<h2 class="section-title">From our collection<br>to your wardrobe.</h2>
+
+<div class="delivery-grid">
+<div class="delivery-card">
+<div class="card-number">01 — ORDER</div>
+<h3>ORDER</h3>
+<p>Choose your favourite piece and send your order.</p>
+</div>
+<div class="delivery-card">
+<div class="card-number">02 — CONFIRM</div>
+<h3>CONFIRM</h3>
+<p>We’ll confirm your size, order and delivery details.</p>
+</div>
+<div class="delivery-card">
+<div class="card-number">03 — DELIVER</div>
+<h3>DELIVER</h3>
+<p>Your order is prepared and sent to you.</p>
+</div>
+</div>
+</section>
+
+<section class="section final-cta">
+<div class="section-label">READY TO ELEVATE YOUR WARDROBE?</div>
+<h2 class="section-title">Find something beautiful today.</h2>
+<p class="section-text">Discover your next favourite piece from By Khadijah.ng.</p>
+<a href="shop.html">SHOP KHADIJAH.NG</a>
+</section>
+
+</main>
+
+<footer>
+<h3>BY KHADIJAH.NG</h3>
+<p>Confidence looks best in luxe.</p>
+<div>
+<strong>EXPLORE</strong><br>
+<a href="index.html">Home</a> ·
+<a href="shop.html">Shop</a> ·
+<a href="#about">About</a> ·
+<a href="#delivery">Delivery</a>
+</div>
+<br>
+<div>
+<strong>HELP</strong><br>
+<a href="checkout.html">Contact</a> ·
+<a href="#delivery">Delivery</a> ·
+<a href="cart.html">Cart</a>
+</div>
+<p>© 2026 BY KHADIJAH.NG — NIGERIA</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

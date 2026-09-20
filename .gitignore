@@ -1,0 +1,5 @@
+.DS_Store
+*.backup*
+*.safe
+*.before-*
+admin.html

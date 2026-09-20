@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product | BY KHADIJAH.NG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="index.html" class="logo">
+BY KHADIJAH<span>.NG</span>
+</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="index.html#story">Our Story</a>
+<a href="index.html#delivery">Delivery</a>
+</nav>
+
+<a href="cart.html" class="bag">
+BAG <b id="cartCount">0</b>
+</a>
+
+</header>
+
+
+<main>
+
+<section class="section">
+
+<div id="product"></div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div>
+<a class="logo">BY KHADIJAH<span>.NG</span></a>
+<p>Elegant Nigerian fashion.</p>
+</div>
+
+<div>
+<strong>CONTACT</strong>
+<p>WhatsApp: 07087580586</p>
+<p>Kano, Nigeria</p>
+</div>
+
+<div>
+<strong>PAYMENT</strong>
+<p>Khadija Ali Dauda</p>
+<p>Account: 7087580586</p>
+</div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+
+var products = [
+
+{
+id:1,
+name:"Royal Gold",
+image:"images/royal-gold.jpg",
+category:"READY-TO-WEAR",
+description:"Elegant ready-to-wear fashion selected for women who love 
+confidence, comfort and timeless style.",
+price:18500
+},
+
+{
+id:2,
+name:"Champagne Set",
+image:"images/champagne-set.jpg",
+category:"SIGNATURE SET",
+description:"A refined fashion set designed to make every occasion feel 
+special.",
+price:15000
+},
+
+{
+id:3,
+name:"Emerald Elegance",
+image:"images/emerald-elegance.jpg",
+category:"READY-TO-WEAR",
+description:"A sophisticated piece for women who love elegant statement 
+style.",
+price:22000
+},
+
+{
+id:4,
+name:"Kano Classic",
+image:"images/kano-classic.jpg",
+category:"SIGNATURE SET",
+description:"Classic Nigerian-inspired elegance designed for effortless 
+confidence.",
+price:12500
+},
+
+{
+id:5,
+name:"New Season Gold",
+image:"images/new-season-gold.jpg",
+category:"READY-TO-WEAR",
+description:"Fresh seasonal styling with a polished and elegant finish.",
+price:20000
+},
+
+{
+id:6,
+name:"Midnight Luxe",
+image:"images/midnight-luxe.jpg",
+category:"SIGNATURE SET",
+description:"An elegant evening-inspired piece for memorable occasions.",
+price:25000
+}
+
+];
+
+
+var id =
+Number(new URLSearchParams(location.search).get("id"));
+
+var product =
+products.find(function(item){
+return item.id===id;
+});
+
+
+var box=document.getElementById("product");
+
+
+if(!product){
+
+box.innerHTML=
+"<div class='empty-shop'>"+
+"<h2>Piece not found.</h2>"+
+"<p>Please return to our collection.</p>"+
+"<a class='button' href='shop.html'>BACK TO SHOP</a>"+
+"</div>";
+
+}else{
+
+box.innerHTML=
+
+"<div class='product-layout'>"+
+
+"<div class='product-photo'>"+
+"<span>BY KHADIJAH.NG</span>"+
+"<strong>BK</strong>"+
+"</div>"+
+
+"<div class='product-details'>"+
+
+"<p class='eyebrow'>"+product.category+"</p>"+
+
+"<h1>"+product.name+"</h1>"+
+
+"<div class='product-detail-price'>"+
+"₦"+product.price.toLocaleString()+
+"</div>"+
+
+"<p class='product-description'>"+
+product.description+
+"</p>"+
+
+"<button class='button' onclick='addToCart("+product.id+")'>"+
+"ADD TO BAG"+
+"</button>"+
+
+"<a class='shop-button' href='https://wa.me/2347087580586'>"+
+"ORDER ON WHATSAPP"+
+"</a>"+
+
+"<div class='product-info'>"+
+
+"<p><strong>DELIVERY</strong><br>"+
+"Available across Nigeria.</p>"+
+
+"<p><strong>ORDERING</strong><br>"+
+"Order directly through WhatsApp.</p>"+
+
+"</div>"+
+
+"</div>"+
+
+"</div>";
+
+}
+
+</script>
+
+</body>
+</html>

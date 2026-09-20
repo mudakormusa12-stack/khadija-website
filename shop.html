@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | BY KHADIJAH.NG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="index.html" class="logo">
+BY KHADIJAH<span>.NG</span>
+</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="index.html#story">Our Story</a>
+<a href="index.html#delivery">Delivery</a>
+</nav>
+
+<a href="cart.html" class="bag">
+BAG <b id="cartCount">0</b>
+</a>
+
+</header>
+
+
+<main>
+
+<section class="section">
+
+<p class="eyebrow">BY KHADIJAH.NG</p>
+
+<h1>
+The <em>collection.</em>
+</h1>
+
+<p class="section-intro">
+Discover elegant pieces selected for women who love
+confidence, comfort and timeless Nigerian style.
+</p>
+
+
+<div class="shop-tools">
+
+<input
+type="search"
+id="search"
+placeholder="Search the collection..."
+>
+
+<select id="category">
+<option value="all">All Categories</option>
+<option value="ready">Ready-to-Wear</option>
+<option value="sets">Signature Sets</option>
+</select>
+
+</div>
+
+
+<div id="products" class="shop-grid"></div>
+
+</section>
+
+</main>
+
+
+<section class="final-cta">
+
+<p class="eyebrow">NEED HELP?</p>
+
+<h2>
+Talk to<br>
+<em>Khadijah.</em>
+</h2>
+
+<p>
+Ask about sizes, colours, delivery or your order.
+</p>
+
+<a
+href="https://wa.me/2347087580586"
+class="button light"
+>
+WHATSAPP KHADIJAH
+</a>
+
+</section>
+
+
+<footer>
+
+<div>
+<a class="logo">BY KHADIJAH<span>.NG</span></a>
+<p>Elegant Nigerian fashion.</p>
+</div>
+
+<div>
+<strong>CONTACT</strong>
+<p>WhatsApp: 07087580586</p>
+<p>Kano, Nigeria</p>
+</div>
+
+<div>
+<strong>PAYMENT</strong>
+<p>Khadija Ali Dauda</p>
+<p>Account: 7087580586</p>
+</div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+
+var products = [
+
+{
+id:1,
+name:"Royal Gold",
+image:"images/royal-gold.jpg",
+category:"ready",
+description:"Elegant ready-to-wear fashion.",
+price:18500
+},
+
+{
+id:2,
+name:"Champagne Set",
+image:"images/champagne-set.jpg",
+category:"sets",
+description:"A refined signature fashion set.",
+price:15000
+},
+
+{
+id:3,
+name:"Emerald Elegance",
+image:"images/emerald-elegance.jpg",
+category:"ready",
+description:"A sophisticated piece for special moments.",
+price:22000
+},
+
+{
+id:4,
+name:"Kano Classic",
+image:"images/kano-classic.jpg",
+category:"sets",
+description:"Classic Nigerian-inspired elegance.",
+price:12500
+},
+
+{
+id:5,
+name:"New Season Gold",
+image:"images/new-season-gold.jpg",
+category:"ready",
+description:"Fresh style from the new season.",
+price:20000
+},
+
+{
+id:6,
+name:"Midnight Luxe",
+image:"images/midnight-luxe.jpg",
+category:"sets",
+description:"Elegant evening-inspired styling.",
+price:25000
+}
+
+];
+
+
+var adminProducts=JSON.parse(localStorage.getItem("khadijaProducts")||"[]");
+adminProducts=adminProducts.filter(function(p){return p.published!==false;}).map(function(p){return {id:p.id,name:p.name,category:(p.category||"OTHER").toLowerCase(),description:p.description||"",price:Number(p.price)||0,image:p.image||"",stock:Number(p.stock)||0,adminProduct:true};});
+products=products.concat(adminProducts);
+
+function displayProducts(){
+
+var search=document.getElementById("search").value.toLowerCase();
+
+var category=document.getElementById("category").value;
+
+var box=document.getElementById("products");
+
+var filtered=products.filter(function(product){
+
+var matchesSearch=
+product.name.toLowerCase().includes(search);
+
+var matchesCategory=
+category==="all" || product.category===category;
+
+return matchesSearch && matchesCategory;
+
+});
+
+
+if(filtered.length===0){
+
+box.innerHTML=
+"<div class='empty-shop'>"+
+"<h3>No pieces found.</h3>"+
+"<p>Try another search or category.</p>"+
+"</div>";
+
+return;
+
+}
+
+
+box.innerHTML=filtered.map(function(product){
+
+return `
+<article class="shop-card">
+
+<div class="shop-image"><img src="${product.image}" alt="${product.name}">
+<span>BK</span>
+</div>
+
+<div class="shop-info">
+
+<p class="eyebrow">${product.category==="sets" ? "SIGNATURE SET" : 
+"READY-TO-WEAR"}</p>
+
+<h3>${product.name}</h3>
+
+<p>${product.description}</p>
+
+<strong>₦${product.price.toLocaleString()}</strong>
+
+<div class="shop-actions">
+
+<a
+class="button"
+href="product.html?id=${product.id}"
+>
+VIEW PIECE
+</a>
+
+${product.stock===0 ? "<button class=\"shop-add\" disabled>SOLD OUT</button>" : "<button class=\"shop-add\" onclick=\"addToCart("+product.id+")\">ADD TO BAG</button>"}
+
+</div>
+
+</div>
+
+</article>
+`;
+
+}).join("");
+
+}
+
+
+document.getElementById("search")
+.addEventListener("input",displayProducts);
+
+document.getElementById("category")
+.addEventListener("change",displayProducts);
+
+displayProducts();
+
+</script>
+
+</body>
+</html>
