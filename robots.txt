@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mudakormusa12-stack.github.io/khadija-website/sitemap.xml
