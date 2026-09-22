@@ -161,7 +161,7 @@ transform:rotate(20deg);
 
 .fashion-monogram{
 font-family:Georgia,serif;
-font-size:150px;
+font-size:64px;
 color:#e9dfd0;
 position:relative;
 }
@@ -293,7 +293,7 @@ gap:50px;
 
 .about-mark{
 font-family:Georgia,serif;
-font-size:180px;
+font-size:72px;
 color:#9c896d;
 opacity:.7;
 }
@@ -409,7 +409,7 @@ padding:70px 6%;
 }
 
 .hero h1{
-font-size:64px;
+font-size:42px;
 }
 
 .hero-visual{
@@ -438,7 +438,7 @@ grid-template-columns:1fr;
 }
 
 .about-mark{
-font-size:100px;
+font-size:56px;
 }
 
 .delivery-grid{
@@ -466,7 +466,7 @@ padding-top:50px;
 }
 
 .hero h1{
-font-size:51px;
+font-size:32px;
 letter-spacing:-2px;
 }
 
@@ -484,11 +484,11 @@ height:400px;
 }
 
 .fashion-monogram{
-font-size:100px;
+font-size:42px;
 }
 
 .section h2{
-font-size:46px;
+font-size:32px;
 }
 
 .collection-card{
@@ -519,7 +519,7 @@ padding:90px 6%;
 .product-photo{min-height:620px;background:linear-gradient(145deg,#f1eee8,#d8d0c4);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:80px;letter-spacing:8px}
 .product-details{padding-top:20px}
 .product-details h1{font-size:52px;margin:10px 0 20px}
-.product-detail-price{font-size:24px;margin-bottom:25px}
+.product-detail-price{font-size:18px;margin-bottom:25px}
 .product-description{line-height:1.8;color:#666;margin-bottom:30px}
 .product-info{border-top:1px solid #ddd;margin-top:35px;padding-top:25px}
 .cart-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 0;border-bottom:1px solid #ddd}
@@ -529,7 +529,7 @@ padding:90px 6%;
 .remove-button{color:#777}
 .cart-total{margin-top:35px;margin-left:auto;max-width:420px;border-top:2px solid #111;padding-top:25px}
 .cart-total p{letter-spacing:2px;font-size:12px}
-.cart-total h2{font-size:32px;margin:10px 0 25px}
+.cart-total h2{font-size:24px;margin:10px 0 25px}
 .checkout-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
 .checkout-form{display:grid;gap:15px}
 .checkout-form label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
@@ -541,7 +541,7 @@ padding:90px 6%;
 .shop-tools,.checkout-layout,.product-layout{grid-template-columns:1fr}
 .shop-grid{grid-template-columns:1fr 1fr}
 .product-photo{min-height:420px}
-.product-details h1{font-size:38px}
+.product-details h1{font-size:30px}
 .cart-item{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:520px){
